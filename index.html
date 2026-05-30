@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalentBridge — Find Your Next Role</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo" onclick="showPage('home')">
+      <span class="logo-icon">⬡</span> TalentBridge
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')" class="nav-link active" data-page="home">Home</a></li>
+      <li><a href="#" onclick="showPage('jobs')" class="nav-link" data-page="jobs">Browse Jobs</a></li>
+      <li><a href="#" onclick="showPage('companies')" class="nav-link" data-page="companies">Companies</a></li>
+      <li><a href="#" onclick="showPage('about')" class="nav-link" data-page="about">About</a></li>
+      <li><a href="#" onclick="showPage('contact')" class="nav-link" data-page="contact">Contact</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <button class="btn-outline" onclick="handlePostJobWorkflow()">Post a Job</button>
+      <div class="nav-cta" id="navAuthBlock">
+        <button class="btn-outline" onclick="showModal('login')">Login</button>
+        <button class="btn-primary" onclick="showModal('signup')">Sign Up Free</button>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🚀 Over 50,000 jobs posted this month</div>
+      <h1 class="hero-title">
+        Bridge the Gap Between<br/>
+        <em>Talent</em> &amp; Opportunity
+      </h1>
+      <p class="hero-sub">Discover roles that match your skills, values, and ambitions. Connect with companies that are building the future — right now.</p>
+      <div class="hero-search">
+        <div class="search-field">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Job title, skill, or keyword..." id="heroSearch" />
+        </div>
+        <div class="search-field">
+          <span class="search-icon">📍</span>
+          <input type="text" placeholder="City or Remote" />
+        </div>
+        <button class="btn-search" onclick="showPage('jobs')">Search Jobs</button>
+      </div>
+      <div class="hero-tags">
+        <span>Popular:</span>
+        <button onclick="showPage('jobs')">UI Designer</button>
+        <button onclick="showPage('jobs')">React Developer</button>
+        <button onclick="showPage('jobs')">Product Manager</button>
+        <button onclick="showPage('jobs')">Data Analyst</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>120K+</strong><span>Active Jobs</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>40K+</strong><span>Companies</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>2M+</strong><span>Candidates</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>95%</strong><span>Satisfaction Rate</span></div>
+    </div>
+  </section>
+
+  <section class="section categories-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Explore by Category</p>
+        <h2 class="section-title">Find Roles in Every Field</h2>
+      </div>
+      <div class="categories-grid">
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">💻</div>
+          <h3>Technology</h3>
+          <span>18,200 jobs</span>
+        </div>
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">📊</div>
+          <h3>Finance</h3>
+          <span>9,400 jobs</span>
+        </div>
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">🎨</div>
+          <h3>Design</h3>
+          <span>7,100 jobs</span>
+        </div>
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">📣</div>
+          <h3>Marketing</h3>
+          <span>11,600 jobs</span>
+        </div>
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">🏥</div>
+          <h3>Healthcare</h3>
+          <span>14,300 jobs</span>
+        </div>
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">🎓</div>
+          <h3>Education</h3>
+          <span>6,800 jobs</span>
+        </div>
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">⚙️</div>
+          <h3>Engineering</h3>
+          <span>13,500 jobs</span>
+        </div>
+        <div class="cat-card" onclick="showPage('jobs')">
+          <div class="cat-icon">📦</div>
+          <h3>Operations</h3>
+          <span>5,900 jobs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section featured-section">
+    <div class="container">
+      <div class="section-header flex-between">
+        <div>
+          <p class="section-label">Hot Picks</p>
+          <h2 class="section-title">Featured Opportunities</h2>
+        </div>
+        <button class="btn-outline" onclick="showPage('jobs')">View All Jobs →</button>
+      </div>
+      <div class="jobs-grid" id="featuredJobsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section hiw-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Simple Process</p>
+        <h2 class="section-title">Get Hired in 3 Steps</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Create Your Profile</h3>
+          <p>Build a standout profile highlighting your skills, experience, and career goals in minutes.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Discover & Apply</h3>
+          <p>Browse thousands of curated roles. Apply with one click using your TalentBridge profile.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Land the Role</h3>
+          <p>Get interview invitations, negotiate offers, and start your new chapter with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section companies-section-home">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Trusted By</p>
+        <h2 class="section-title">World-Class Companies Are Hiring</h2>
+      </div>
+      <div class="company-logos">
+        <div class="company-pill">🔵 Stripe</div>
+        <div class="company-pill">🟠 Figma</div>
+        <div class="company-pill">🟢 Shopify</div>
+        <div class="company-pill">🔴 Netflix</div>
+        <div class="company-pill">🟣 Notion</div>
+        <div class="company-pill">🔶 Airbnb</div>
+        <div class="company-pill">🟦 Slack</div>
+        <div class="company-pill">⬛ Vercel</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Success Stories</p>
+        <h2 class="section-title">Heard From Our Community</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"TalentBridge helped me land my dream role at a Series B startup. The quality of listings here is unmatched — real jobs, real companies."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AK</div>
+            <div>
+              <strong>Arjun Kapoor</strong>
+              <span>Senior Frontend Engineer @ Vercel</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card featured-testimonial">
+          <p>"As a hiring manager, the candidate quality we find here is exceptional. We filled 3 senior roles in under 2 weeks. Absolutely worth it."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SR</div>
+            <div>
+              <strong>Sofia Reyes</strong>
+              <span>Head of People @ Notion</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>"I was stuck in the same role for 4 years. TalentBridge's smart matching surfaced opportunities I never would have found on my own."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">ML</div>
+            <div>
+              <strong>Marcus Li</strong>
+              <span>Product Manager @ Figma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Find Your Next Role?</h2>
+        <p>Join over 2 million professionals who've already made their move.</p>
+        <div class="cta-buttons">
+          <button class="btn-primary btn-lg" onclick="showModal('signup')">Create Free Account</button>
+          <button class="btn-ghost btn-lg" onclick="showPage('jobs')">Browse Jobs</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="page-jobs" class="page">
+  <section class="page-hero jobs-hero">
+    <div class="container">
+      <h1>Browse <em>Open Roles</em></h1>
+      <p>Find the opportunity that fits your life.</p>
+      <div class="hero-search hero-search-jobs">
+        <div class="search-field">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Job title, keyword..." id="jobSearch" oninput="filterJobs()" />
+        </div>
+        <div class="search-field">
+          <span class="search-icon">📍</span>
+          <input type="text" placeholder="Location or Remote" id="locationSearch" oninput="filterJobs()" />
+        </div>
+        <button class="btn-search" onclick="filterJobs()">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container jobs-layout">
+      <aside class="filters-panel">
+        <h3>Filter Jobs</h3>
+        <div class="filter-group">
+          <label>Job Type</label>
+          <div class="filter-options" id="typeFilters">
+            <label class="checkbox-label"><input type="checkbox" value="Full-time" onchange="filterJobs()" checked /> Full-time</label>
+            <label class="checkbox-label"><input type="checkbox" value="Part-time" onchange="filterJobs()" checked /> Part-time</label>
+            <label class="checkbox-label"><input type="checkbox" value="Contract" onchange="filterJobs()" checked /> Contract</label>
+            <label class="checkbox-label"><input type="checkbox" value="Remote" onchange="filterJobs()" checked /> Remote</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Category</label>
+          <select id="categoryFilter" onchange="filterJobs()">
+            <option value="">All Categories</option>
+            <option>Technology</option>
+            <option>Design</option>
+            <option>Marketing</option>
+            <option>Finance</option>
+            <option>Operations</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Experience Level</label>
+          <select id="levelFilter" onchange="filterJobs()">
+            <option value="">All Levels</option>
+            <option>Entry Level</option>
+            <option>Mid Level</option>
+            <option>Senior Level</option>
+            <option>Lead / Manager</option>
+          </select>
+        </div>
+        <button class="btn-outline btn-full" onclick="resetFilters()">Reset Filters</button>
+      </aside>
+
+      <div class="jobs-main">
+        <div class="jobs-toolbar">
+          <span id="jobCount">Showing all jobs</span>
+          <select id="sortJobs" onchange="filterJobs()">
+            <option value="newest">Newest First</option>
+            <option value="salary">Highest Salary</option>
+            <option value="az">A–Z</option>
+          </select>
+        </div>
+        <div id="jobsList"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-companies" class="page">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Top <em>Companies</em> Hiring</h1>
+      <p>Explore culture, mission, and open roles at world-class organizations.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="companies-grid-main" id="companiesGrid"></div>
+    </div>
+  </section>
+</div>
+
+<div id="page-about" class="page">
+  <section class="page-hero">
+    <div class="container">
+      <h1>About <em>TalentBridge</em></h1>
+      <p>We exist to close the gap between exceptional talent and meaningful work.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-layout">
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">Built by Job Seekers, for Job Seekers</h2>
+        <p>TalentBridge was founded in 2019 by a team of engineers and recruiters who were frustrated with the broken state of online hiring. Too many irrelevant listings. Too little transparency. Too much friction.</p>
+        <p>We built the platform we wished existed — one where candidates are treated as people, not resumes, and companies are evaluated on their culture as much as their perks.</p>
+        <p>Today, we serve over 2 million professionals across 80+ countries, with a mission to make meaningful employment accessible to everyone.</p>
+        <div class="about-values">
+          <div class="value-item"><span>✦</span> Transparency First</div>
+          <div class="value-item"><span>✦</span> Candidate-Centric</div>
+          <div class="value-item"><span>✦</span> Quality Over Quantity</div>
+          <div class="value-item"><span>✦</span> Diversity & Inclusion</div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card-stack">
+          <div class="about-stat-card">
+            <strong>120K+</strong>
+            <span>Live Job Listings</span>
+          </div>
+          <div class="about-stat-card accent">
+            <strong>40K+</strong>
+            <span>Hiring Companies</span>
+          </div>
+          <div class="about-stat-card">
+            <strong>80+</strong>
+            <span>Countries Served</span>
+          </div>
+          <div class="about-stat-card accent">
+            <strong>2M+</strong>
+            <span>Members Worldwide</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section team-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">The Team</p>
+        <h2 class="section-title">Meet the People Behind TalentBridge</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar" style="background: var(--accent)">JL</div>
+          <h3>James Liu</h3>
+          <span>Co-founder & CEO</span>
+          <p>Former Google engineer. Obsessed with making hiring humane.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background: var(--accent2)">PR</div>
+          <h3>Ali Khan</h3>
+          <span>Co-founder & CPO</span>
+          <p>Ex-LinkedIn product lead. Passionate about candidate experience.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background: #2dd4bf">MK</div>
+          <h3>Marcus Klein</h3>
+          <span>CTO</span>
+          <p>Full-stack architect with 15 years building scalable platforms.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background: #f59e0b">SN</div>
+          <h3>Sara Nguyen</h3>
+          <span>Head of Design</span>
+          <p>Design systems fanatic. Previously Figma, Airbnb.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-contact" class="page">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Get In <em>Touch</em></h1>
+      <p>We'd love to hear from you — candidates, employers, or partners.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-layout">
+      <div class="contact-info">
+        <h2>Let's Connect</h2>
+        <p>Whether you're a job seeker with a question, a company wanting to post roles, or a partner looking to integrate — we're here.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <strong>Email</strong>
+              <span>hello@talentbridge.io</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <span>+1 (415) 555-0192</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Office</strong>
+              <span>340 Pine Street, San Francisco, CA 94104</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <strong>Hours</strong>
+              <span>Mon–Fri, 9am–6pm PT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="submitContact(event)">
+        <h2>Send a Message</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="jane@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select>
+            <option>Job Seeker Inquiry</option>
+            <option>Employer / Hiring</option>
+            <option>Partnership</option>
+            <option>Technical Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell us how we can help..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full btn-lg">Send Message</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" onclick="showPage('home')"><span class="logo-icon">⬡</span> TalentBridge</a>
+        <p>Connecting exceptional talent with companies building the future.</p>
+        <div class="social-links">
+          <a href="https://x.com/" class="social-btn" target="_blank" rel="noopener noreferrer">𝕏</a>
+          <a href="https://linkedin.com" class="social-btn" target="_blank" rel="noopener noreferrer">in</a>
+          <a href="https://facebook.com" class="social-btn" target="_blank" rel="noopener noreferrer">f</a>
+          <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener noreferrer">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>For Job Seekers</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('jobs')">Browse Jobs</a></li>
+          <li><a href="#">Career Advice</a></li>
+          <li><a href="#">Resume Builder</a></li>
+          <li><a href="#">Salary Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>For Employers</h4>
+        <ul>
+          <li><a href="#" onclick="handlePostJobWorkflow()">Post a Job</a></li>
+          <li><a href="#" onclick="showPage('companies')">Company Profiles</a></li>
+          <li><a href="#">Talent Search</a></li>
+          <li><a href="#">Hiring Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('about')">About Us</a></li>
+          <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TalentBridge Inc. All rights reserved.</span>
+      <span>Made with ❤️ in Karachi</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
